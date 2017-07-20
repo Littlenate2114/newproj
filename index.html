@@ -1,11 +1,210 @@
-$.get('text.txt', function(data) {
-         if (data.indexOf("Hello World") !== -1) {
-          var fs = require("fs");
-          var html = fs.readFileSync("text.txt", "UTF-8");
-          fs.writeFileSync('config.txt', html)
-          alert(html);
-         }
-         else {
-          alert('not found');
-         }
-      }, 'text');
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+  <style media="screen">
+      .m {
+      background-color:#ecf0f1;
+      border: 1px solid black;
+      position: relative;
+      top: 0px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      width: 450px;
+      height: 425px;
+      background-image:url('back.jpg');
+      background-size:cover;
+      background-position:right;      
+    }
+    @font-face {
+    font-family: fonty;
+    src: url(Raleway-Light.ttf);
+    }
+    @font-face {
+    font-family: fontysec;
+    src: url(Raleway-Medium.ttf);
+    }
+    * {
+      cursor:default;
+      margin: 0px;
+      padding: 0px;
+      font-family: fonty;
+      box-sizing: border-box;
+    }
+    .app{
+      display: flex;
+      text-align: left;
+      flex-direction: column;
+    }
+    .app h1 {
+      font-family: 'fontysec';
+      font-size: 15px;
+      font-weight:500;
+    }
+    .app p {
+      font-size: 13px;
+    }
+    html {
+    }
+    body{
+      overflow: hidden;
+    }
+    input{
+      position:absolute;
+      top:-3px;
+      left:0px;
+      width: 100%;
+      height: 65px;
+      outline: none;
+      border: 0px;
+      font-size: 25px;
+      padding-left: 10px;
+      font-weight: 300;
+      background-color: none;
+      background:transparent;
+    }
+    .item{
+      width: 100%;
+      height: 45px;
+      background-color:none;
+      color: black;
+      font-size: 17px;
+      display: flex;
+      align-items: center;
+      padding-left: 7px;
+    }
+    .item2{
+      position:absolute;
+      top:60px;
+      left:0px;
+      background-color: #0970db;
+      color: white;
+      width: 100%;
+      height: 45px;
+      font-size: 17px;
+      display: flex;
+      align-items: center;
+      padding-left: 5px;
+    }
+    img.i {
+      padding-right: 8px;
+    }
+    img.p{
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      width: 45px;
+      height: 45px;
+    }
+    .holder{
+        position: absolute;
+        top:105px;
+        left:0px;
+    }
+  </style>
+    <div class="m" onselectstart="return false">
+    <input id="fname" type="text" onkeyup="func()" placeholder="">
+    <div class="item2">
+      <img class="i" id="secondone" src="chrome.png" width="43" height="auto" alt="" style="margin-left:-3px;">
+      <div class="app">
+        <h1 style="margin-left:-3px;" id="appy">Chrome</h1>
+        <p style="margin-left:-3px;">will be executed</p>
+      </div>
+    </div>
+    <div class="holder"> 
+    <div class="item"><img class="i" id="atomi" src="atom.png" width="40" height="auto" alt="" style="margin-left:-3px;">
+      <div class="app">
+        <h1 id="atomh" >Gvim</h1>
+        <p id="atomp" >The Best Texteditor Ever Developed By Man</p>
+      </div>
+    </div>
+    <div class="item"><img class="i" src="spotify.png" width="39" height="auto" alt="" style="margin-left:-3px;">
+      <div class="app">
+        <h1>Spotify</h1>
+        <p>Play your favorite tunes anywhere, anytime</p>
+      </div>
+    </div>
+     <div class="item"><img class="i" src="gimp.png" width="40" height="auto" alt="" style="margin-left:-3px;">
+      <div class="app">
+        <h1 id="atomh">Gimp</h1>
+        <p id="atomp">A Cross-Platform Image Editor</p>
+      </div>
+    </div>
+    </div>
+    </div>
+    <script src="jquery-3.2.1.min.js" onload="window.$ = window.jQuery = module.exports;"></script>
+    <script src="js.js"></script>
+    <script>
+        function func(){                   
+                var fname = document.getElementById("fname").value;
+                var newname = document.getElementById("appy");                
+                newname.innerHTML = fname;
+                 var now = new Date();
+ 
+                // Get the hours, minutes and seconds from the current time
+                var hours = now.getHours();
+                var minutes = now.getMinutes();
+                var seconds = now.getSeconds();
+ 
+                // Format hours, minutes and seconds
+                if (hours < 10) {
+                    hours = "0" + hours;
+                }
+                if (minutes < 10) {
+                    minutes = "0" + minutes;
+                }
+                if (seconds < 10) {
+                    seconds = "0" + seconds;
+                }
+
+                if (hours>12){
+                   hours=hours-12;
+                }
+ 
+                // Gets the element we want to inject the clock into
+                var elem = document.getElementById('fname');
+ 
+                // Sets the elements inner HTML value to our clock data
+                elem.placeholder = "The Time Is " + hours + ':' + minutes;
+                
+                if(fname==""){
+                newname.innerHTML = "Chrome"
+                }
+        }
+
+       var now = new Date();
+ 
+                // Get the hours, minutes and seconds from the current time
+                var hours = now.getHours();
+                var minutes = now.getMinutes();
+                var seconds = now.getSeconds();
+ 
+                // Format hours, minutes and seconds
+                if (hours < 10) {
+                    hours = "0" + hours;
+                }
+                if (minutes < 10) {
+                    minutes = "0" + minutes;
+                }
+                if (seconds < 10) {
+                    seconds = "0" + seconds;
+                }
+
+                if (hours>12){
+                   hours=hours-12;
+                }
+ 
+                // Gets the element we want to inject the clock into
+                var elem = document.getElementById('fname');
+ 
+                // Sets the elements inner HTML value to our clock data
+                elem.placeholder = "The Time Is " + hours + ':' + minutes;
+        
+    </script>
+  </body>
+</html>
